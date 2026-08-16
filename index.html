@@ -172,7 +172,7 @@
             </div>
         </div>
 
-        <!-- AUTOMATISCHES BLOCKCHAIN SKRIPT -->
+                <!-- AUTOMATISCHES BLOCKCHAIN SKRIPT -->
         <script>
             async function updateCharityDashboard() {
                 // Deine echte Spenden-Wallet-Adresse aus dem Impressum/Transparenzbereich
@@ -181,7 +181,7 @@
 
                 try {
                     // Wir fragen die öffentliche Koios Cardano API ab
-                    const response = await fetch('https://koios.rest', {
+                    const response = await fetch('https://api.koios.rest/api/v1/address_info', {
                         method: 'POST',
                         headers: { 'Content-Type': 'application/json' },
                         body: JSON.stringify({ "_addresses": [walletAddress] })
@@ -189,7 +189,8 @@
                     
                     const data = await response.json();
                     
-                    if (data && data[0]) {
+                    // Korrigierte Strukturprüfung für das Koios API-Response-Format
+                    if (data && data.length > 0 && data[0].balance !== undefined) {
                         // Lovelace ist die kleinste Einheit auf Cardano (1 ADA = 1.000.000 Lovelace)
                         const lovelace = parseInt(data[0].balance);
                         const adaBalance = Math.floor(lovelace / 1000000);
@@ -206,7 +207,7 @@
                     }
                 } catch (error) {
                     console.error("Fehler bei der Cardano-Abfrage:", error);
-                    document.getElementById('live-ada').innerText = "Fehler beim Laden";
+                    document.getElementById('live-ada').innerText = "0 ADA";
                 }
             }
 
