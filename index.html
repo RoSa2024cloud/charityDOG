@@ -116,28 +116,31 @@
          </p>
         </div>
 
-                <!-- LIVE CHARITY DASHBOARD -->
+                        <!-- LIVE CHARITY DASHBOARD -->
         <div class="card" style="border: 1px solid #10b981;">
             <h2 style="border-bottom-color: #10b981;">📊 Live Charity-Dashboard</h2>
             <p style="font-size: 0.95rem; color: var(--text-muted); margin-bottom: 20px;">
-                Vollkommene Transparenz: Sobald der Token live geht, listen wir hier tagesaktuell den Erfolg unserer Mission und alle gesammelten Krypto-Spenden auf.
+                Vollkommene Transparenz: Die gesammelten ADA-Spenden werden über eine direkte Blockchain-Abfrage in Echtzeit live dargestellt.
             </p>
             
             <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 20px;">
                 <div style="background: #0b0e14; padding: 20px; border-radius: 8px; border: 1px solid #232d3f; text-align: center;">
                     <div style="font-size: 0.85rem; color: var(--text-muted); text-transform: uppercase;">Gesammelte Spenden-ADA</div>
-                    <div style="font-size: 1.8rem; font-weight: bold; color: #10b981; margin: 5px 0;">0 ADA</div>
-                    <div style="font-size: 0.8rem; color: var(--text-muted);">Aus 2% Minswap V2 Trading-Fee</div>
+                    <!-- Die ID "live-ada" wird unten vom Skript automatisch befüllt -->
+                    <div id="live-ada" style="font-size: 1.8rem; font-weight: bold; color: #10b981; margin: 5px 0;">Lädt...</div>
+                    <div style="font-size: 0.8rem; color: var(--text-muted);">Live aus der Blockchain (Minswap Fee)</div>
                 </div>
                 <div style="background: #0b0e14; padding: 20px; border-radius: 8px; border: 1px solid #232d3f; text-align: center;">
                     <div style="font-size: 0.85rem; color: var(--text-muted); text-transform: uppercase;">Bereits ausgezahlt (Euro)</div>
+                    <!-- Euro-Spenden müssen weiterhin manuell gepflegt werden, da Bankdaten privat sind -->
                     <div style="font-size: 1.8rem; font-weight: bold; color: #10b981; margin: 5px 0;">0,00 €</div>
                     <div style="font-size: 0.8rem; color: var(--text-muted);">Direktüberweisungen an das Tierheim</div>
                 </div>
             </div>
 
             <div style="background-color: #0b0e14; border-radius: 10px; padding: 4px; border: 1px solid #232d3f; margin-top: 25px;">
-                <div style="background: linear-gradient(90deg, var(--accent-color), #10b981); height: 16px; border-radius: 8px; width: 0%;"></div>
+                <!-- Das Skript passt die Weite des Balkens automatisch an -->
+                <div id="live-progress" style="background: linear-gradient(90deg, var(--accent-color), #10b981); height: 16px; border-radius: 8px; width: 0%; transition: width 1s ease-in-out;"></div>
             </div>
             <div style="display: flex; justify-content: space-between; font-size: 0.8rem; color: var(--text-muted); margin-top: 5px;">
                 <span>Start: 0 ADA</span>
@@ -168,6 +171,49 @@
                 </table>
             </div>
         </div>
+
+        <!-- AUTOMATISCHES BLOCKCHAIN SKRIPT -->
+        <script>
+            async function updateCharityDashboard() {
+                // Deine echte Spenden-Wallet-Adresse aus dem Impressum/Transparenzbereich
+                const walletAddress = "addr1q9j6pjr4zgwenjqx9xslx9qh98vxelrayyycerqvd2zv38r2umgck059rxfht8ve0ee5yg085vyxarqwfx2kd5t69rmqcedy6j"; 
+                const targetADA = 5000; // Das nächste Spendenziel für den Ladebalken
+
+                try {
+                    // Wir fragen die öffentliche Koios Cardano API ab
+                    const response = await fetch('https://koios.rest', {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify({ "_addresses": [walletAddress] })
+                    });
+                    
+                    const data = await response.json();
+                    
+                    if (data && data[0]) {
+                        // Lovelace ist die kleinste Einheit auf Cardano (1 ADA = 1.000.000 Lovelace)
+                        const lovelace = parseInt(data[0].balance);
+                        const adaBalance = Math.floor(lovelace / 1000000);
+                        
+                        // HTML-Inhalt live updaten
+                        document.getElementById('live-ada').innerText = adaBalance.toLocaleString('de-DE') + " ADA";
+                        
+                        // Ladebalken berechnen (maximal 100%)
+                        let progressPercent = (adaBalance / targetADA) * 100;
+                        if (progressPercent > 100) progressPercent = 100;
+                        document.getElementById('live-progress').style.width = progressPercent + "%";
+                    } else {
+                        document.getElementById('live-ada').innerText = "0 ADA";
+                    }
+                } catch (error) {
+                    console.error("Fehler bei der Cardano-Abfrage:", error);
+                    document.getElementById('live-ada').innerText = "Fehler beim Laden";
+                }
+            }
+
+            // Skript beim Laden der Seite direkt ausführen
+            window.addEventListener('DOMContentLoaded', updateCharityDashboard);
+        </script>
+
 
         <!-- Über uns -->
         <div class="card">
