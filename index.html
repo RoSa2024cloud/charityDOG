@@ -1,14 +1,14 @@
-<!DOCTYPE html>
-<html lang="de">
+html<!DOCTYPE html>
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CharityDOG ($cDOG) - Der Cardano Tierschutz-Memecoin</title>
+    <title>CharityDOG ($cDOG) - The Ultimate Cardano Reward Arena</title>
     <style>
         :root {
             --bg-color: #0b0e14;
             --card-color: #161b26;
-            --accent-color: #0033ad; /* Cardano Blau */
+            --accent-color: #0033ad; /* Cardano Blue */
             --text-color: #f0f2f5;
             --text-muted: #94a3b8;
         }
@@ -92,80 +92,76 @@
 </head>
 <body>
 
-        <header style="text-align: center; padding: 30px 20px;">
+    <header style="text-align: center; padding: 30px 20px;">
         <img src="logo.jpg" alt="CharityDOG Logo" style="width: 150px; height: 150px; border-radius: 50%; border: 3px solid var(--accent-color); margin-bottom: 15px;">
         <div style="font-size: 28px; font-weight: bold; letter-spacing: 1px;">CharityDOG ($cDOG)</div>
     </header>
-
 
     <div class="container">
         
         <!-- Hero Section -->
         <div class="hero">
-            <span class="badge">Echtes Herz auf Cardano</span>
-            <h1>Ein Mops mit einer Mission</h1>
-            <p>Der erste Cardano-Memecoin, der durch jeden Trade aktiv Pfoten rettet.</p>
+            <span class="badge">Gamified Holding Incentive on Cardano</span>
+            <h1>Feeding the Whales</h1>
+            <p>The ultimate competitive reflection token rewarding the most loyal holders in the arena.</p>
         </div>
 
-        <!-- Pre-Launch & Aufbau-Hinweis -->
-     <div class="card" style="border: 2px dashed #f59e0b; background-color: #1e1b4b; text-align: center; padding: 20px; margin-bottom: 25px;">
-         <h3 style="color: #f59e0b; margin-top: 0; font-size: 1.3rem;">🚧 PROJEKT AKTUELL IM AUFBAU 🚧</h3>
-         <p style="margin-bottom: 5px; font-weight: bold;">Wichtiger Hinweis für alle Besucher des CharityDOG-Projekts:</p>
-         <p style="color: var(--text-muted); font-size: 0.95rem; margin-top: 5px;">
-            Diese Webseite dient aktuell reinen Vorbereitungszwecken. Der Token <strong>$cDOG wurde noch NICHT auf der Blockchain gelaunched</strong> und es findet aktuell kein Presale statt. Bitte senden Sie kein ADA an irgendwelche Adressen. Wir bereiten das Projekt im Hintergrund rechtssicher vor – der offizielle Starttermin wird hier rechtzeitig bekannt gegeben!
-         </p>
+        <!-- Pre-Launch & Construction Notice -->
+        <div class="card" style="border: 2px dashed #f59e0b; background-color: #1e1b4b; text-align: center; padding: 20px; margin-bottom: 25px;">
+            <h3 style="color: #f59e0b; margin-top: 0; font-size: 1.3rem;">🚧 PROJECT CURRENTLY IN PRE-LAUNCH 🚧</h3>
+            <p style="margin-bottom: 5px; font-weight: bold;">Important notice for all visitors:</p>
+            <p style="color: var(--text-muted); font-size: 0.95rem; margin-top: 5px;">
+                This website is currently for preparation purposes only. The token <strong>$cDOG has NOT been launched on the blockchain yet</strong> and no active public sale is running. Please do not send ADA to any addresses. We are setting up everything securely behind the scenes – the official launch date will be announced here soon!
+            </p>
         </div>
 
-        <!-- LIVE CHARITY DASHBOARD -->
+        <!-- LIVE REWARD DASHBOARD -->
         <div class="card" style="border: 1px solid #10b981;">
-            <h2 style="border-bottom-color: #10b981;">📊 Live Charity-Dashboard</h2>
+            <h2 style="border-bottom-color: #10b981;">📊 Live Reward Dashboard</h2>
             <p style="font-size: 0.95rem; color: var(--text-muted); margin-bottom: 20px;">
-                Vollkommene Transparenz: Die gesammelten ADA-Spenden werden über eine direkte Blockchain-Abfrage in Echtzeit live dargestellt.
+                Complete on-chain transparency: The accumulated trading volume tax is tracked in real-time directly from the Cardano blockchain ledger.
             </p>
             
             <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 20px;">
                 <div style="background: #0b0e14; padding: 20px; border-radius: 8px; border: 1px solid #232d3f; text-align: center;">
-                    <div style="font-size: 0.85rem; color: var(--text-muted); text-transform: uppercase;">Gesammelte Spenden-ADA</div>
-                    <!-- Die ID "live-ada" wird unten vom Skript automatisch befüllt -->
-                    <div id="live-ada" style="font-size: 1.8rem; font-weight: bold; color: #10b981; margin: 5px 0;">Lädt...</div>
-                    <div style="font-size: 0.8rem; color: var(--text-muted);">Live aus der Blockchain (Minswap Fee)</div>
+                    <div style="font-size: 0.85rem; color: var(--text-muted); text-transform: uppercase;">Accumulated Whale Food</div>
+                    <!-- The ID "live-ada" will be automatically filled by the script -->
+                    <div id="live-ada" style="font-size: 1.8rem; font-weight: bold; color: #10b981; margin: 5px 0;">Loading...</div>
+                    <div style="font-size: 0.8rem; color: var(--text-muted);">Current Distribution Wallet Balance</div>
                 </div>
                 <div style="background: #0b0e14; padding: 20px; border-radius: 8px; border: 1px solid #232d3f; text-align: center;">
-                    <div style="font-size: 0.85rem; color: var(--text-muted); text-transform: uppercase;">Bereits ausgezahlt (Euro)</div>
-                    <!-- Euro-Spenden müssen weiterhin manuell gepflegt werden, da Bankdaten privat sind -->
-                    <div style="font-size: 1.8rem; font-weight: bold; color: #10b981; margin: 5px 0;">0,00 €</div>
-                    <div style="font-size: 0.8rem; color: var(--text-muted);">Direktüberweisungen an das Tierheim</div>
+                    <div style="font-size: 0.85rem; color: var(--text-muted); text-transform: uppercase;">Total Historical Airdrops</div>
+                    <div style="font-size: 1.8rem; font-weight: bold; color: #10b981; margin: 5px 0;">0 $cDOG</div>
+                    <div style="font-size: 0.8rem; color: var(--text-muted);">Distributed to the Top 69 Arenas</div>
                 </div>
             </div>
 
             <div style="background-color: #0b0e14; border-radius: 10px; padding: 4px; border: 1px solid #232d3f; margin-top: 25px;">
-                <!-- Das Skript passt die Weite des Balkens automatisch an -->
+                <!-- Script adjusts the width automatically up to 10M target -->
                 <div id="live-progress" style="background: linear-gradient(90deg, var(--accent-color), #10b981); height: 16px; border-radius: 8px; width: 0%; transition: width 1s ease-in-out;"></div>
             </div>
             <div style="display: flex; justify-content: space-between; font-size: 0.8rem; color: var(--text-muted); margin-top: 5px;">
-                <span>Start: 0 ADA</span>
-                <span>Nächstes Spendenziel: 5.000 ADA</span>
+                <span>Start: 0 $cDOG</span>
+                <span>Next Milestone: 10,000,000 $cDOG</span>
             </div>
 
-            <h3 style="margin-top: 30px; font-size: 1.1rem; color: #fff;">🗓️ Offizielles Spenden-Protokoll</h3>
+            <h3 style="margin-top: 30px; font-size: 1.1rem; color: #fff;">🗓️ Official Milestone History</h3>
             <div style="overflow-x: auto; margin-top: 15px;">
                 <table style="width: 100%; border-collapse: collapse; text-align: left; font-size: 0.9rem;">
                     <thead>
                         <tr style="background-color: #0b0e14; color: var(--text-muted);">
-                            <th style="padding: 12px; border-bottom: 2px solid #232d3f;">Datum</th>
-                            <th style="padding: 12px; border-bottom: 2px solid #232d3f;">ADA Betrag</th>
-                            <th style="padding: 12px; border-bottom: 2px solid #232d3f;">Euro Wert</th>
-                            <th style="padding: 12px; border-bottom: 2px solid #232d3f;">Zweck</th>
-                            <th style="padding: 12px; border-bottom: 2px solid #232d3f;">Nachweis</th>
+                            <th style="padding: 12px; border-bottom: 2px solid #232d3f;">Date</th>
+                            <th style="padding: 12px; border-bottom: 2px solid #232d3f;">Airdrop Amount</th>
+                            <th style="padding: 12px; border-bottom: 2px solid #232d3f;">Trigger Event</th>
+                            <th style="padding: 12px; border-bottom: 2px solid #232d3f;">Status</th>
                         </tr>
                     </thead>
                     <tbody>
                         <tr>
                             <td style="padding: 12px; border-bottom: 1px solid #232d3f; color: var(--text-muted);">--.--.----</td>
-                            <td style="padding: 12px; border-bottom: 1px solid #232d3f;">0 ADA</td>
-                            <td style="padding: 12px; border-bottom: 1px solid #232d3f;">0,00 €</td>
-                            <td style="padding: 12px; border-bottom: 1px solid #232d3f;">Projekt im Aufbau</td>
-                            <td style="padding: 12px; border-bottom: 1px solid #232d3f; color: var(--text-muted); font-size: 0.8rem;">Noch kein Beleg</td>
+                            <td style="padding: 12px; border-bottom: 1px solid #232d3f;">0 $cDOG</td>
+                            <td style="padding: 12px; border-bottom: 1px solid #232d3f;">Pre-Launch Accumulation</td>
+                            <td style="padding: 12px; border-bottom: 1px solid #232d3f; color: var(--text-muted); font-size: 0.8rem;">Waiting for DEX Launch</td>
                         </tr>
                     </tbody>
                 </table>
